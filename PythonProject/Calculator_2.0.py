@@ -12,3 +12,53 @@ In the main program, create an instance of the Calculator class, and use a while
 Use the input() function to get input from the user for the numbers and operation symbol.Use the math library for advanced mathematical operations
 Use the isinstance() function to check if the input is a number.'''
 
+class Calculator:
+    def __init__(self):
+        # to initialize the basics math functions
+        self.operations={
+            '+': self.add,
+            '-': self.substract,
+            '*': self.multiply,
+            '/': self.divide
+        }
+    # basics operations
+    def add(self,num1, num2):
+        return num1 + num2
+
+    def substract(self,num1, num2):
+        return num1 - num2
+
+    def multiply(self,num1, num2):
+        return num1 * num2
+
+    def divide(self,num1, num2):
+        if num2 != 0:
+            return num1 / num2
+        else:
+            return 'error!! can not divide by 0'
+
+    def add_operation(self, symbol, function):
+        self.operations[symbol]= function
+
+    def calculate(self, num1,operation,num2):
+        if operation not in self.operations:
+            print(f'Error'
+                  f': {operation}is not valide')
+            raise ValueError(f'invalid operation:{operation}')
+        if not (isinstance(num1,(int,float)) or not isinstance(num2,(int,float))):
+            print ('Error: you must input numbers')
+            raise TypeError('input must be number')
+        return self.operations[operation](num1,num2)
+
+#adding advanced mathematical operations
+def exponentiation(num1,num2):
+    return num1 ** num2
+def square_root(num1):
+    if num1 <0:
+        raise ValueError('Error, we can not take negative number')
+    return math.sqrt(num1)
+def logarithm (num1,base=math.e):
+    if num1 <= 0:
+        raise ValueError("num1 must be positive")
+    return math.log(num1, base)
+
