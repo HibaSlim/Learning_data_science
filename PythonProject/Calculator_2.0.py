@@ -1,5 +1,7 @@
 import math
 
+from Python_function_checkpoint import calculator
+
 '''    EXERCICE  Creating a calculator
 Create a new file called "calculator_2.0.py"
 Create a class called "Calculator" that contains the following:
@@ -62,3 +64,37 @@ def logarithm (num1,base=math.e):
         raise ValueError("num1 must be positive")
     return math.log(num1, base)
 
+Calculator=Calculator()
+Calculator.add_operation('^',exponentiation)
+Calculator.add_operation('sqrt',square_root)
+Calculator.add_operation('log',logarithm)
+
+while True:
+    print('Choose from available operations:','\nBasics: + , - , * , /', '\nAdvanced: Exponetiation ^, SquareRoot sqrt, logarithm log')
+    operation =input('choose operation or exit:')
+    if operation=='exit' :
+        print('exiting the calculator')
+        break
+    if operation in ['sqrt', 'log']:
+        num1 = isinstance(input("Enter the first number: "),(int,float))
+        if operation == 'log':
+            base = float(input("Enter the base (default is e): ") or math.e)
+            try:
+                result = Calculator.calculate(num1, operation, base)
+                print(f"The result is: {result}")
+            except Exception as e:
+                print(f"Error: {e}")
+        else:
+            try:
+                result = Calculator.calculate(num1, operation, None)
+                print(f"The result is: {result}")
+            except Exception as e:
+                print(f"Error: {e}")
+    else:
+        try:
+            num1 = isinstance(input("Enter the first number: "),(int,float))
+            num2 = isinstance(input("Enter the second number: "),(int,float))
+            result = Calculator.calculate(num1, operation, num2)
+            print(f"The result is: {result}")
+        except Exception as e:
+            print(f"Error: {e}")
