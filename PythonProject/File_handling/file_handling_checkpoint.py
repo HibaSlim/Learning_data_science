@@ -25,9 +25,9 @@ loan_amounts = data['LoanAmount'].dropna()
 print(loan_amounts)
  #  Performing basic statistical analysis
 mean_loan_amount = np.mean(loan_amounts)
-print(f"Mean loan amount: {mean_loan_amount:.2f}") #146.41
+print(f"Mean loan amount: {mean_loan_amount:.2f}")
 median_loan_amount = np.median(loan_amounts)
-print(f"Median loan amount: {median_loan_amount}")  #128.0
+print(f"Median loan amount: {median_loan_amount}")
 std_loan_amount = np.std(loan_amounts)
-print(f"Standard deviation of loan amounts: {std_loan_amount:.2f}")  #85.52
+print(f"Standard deviation of loan amounts: {std_loan_amount:.2f}")
 '''
