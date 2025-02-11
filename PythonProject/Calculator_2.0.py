@@ -49,19 +49,19 @@ def log (x,base=math.e):
     if x <= 0:
         raise ValueError("the number must be positive")
     return math.log(x, base)
-def main():
-    Calculator=Calculator()
-    Calculator.add_operation('^',exponentiate)
-    Calculator.add_operation('sqrt',sqrt)
-    Calculator.add_operation('log',log)
+
+Calculator=Calculator()
+Calculator.add_operation('^',exponentiate)
+Calculator.add_operation('sqrt',sqrt)
+Calculator.add_operation('log',log)
 
 while True:
     try:
-        x = isinstance(input("Enter the first number (or 'exit' to quit): "),(int,float))
+        x = float(input("Enter the first number (or 'exit' to quit): "))
         print('Choose from available operations:','\nBasics: + , - , * , /', '\nAdvanced: Exponetiate ^, SquareRoot sqrt, logarithm log')
         operation =input('choose operation or exit:')
         if operation not in ('sqrt','log'):
-            y = float(input("Enter the first number (or 'exit' to quit): "))
+            y = float(input("Enter the second number (or 'exit' to quit): "))
         else :
             y =None
         if operation == 'exit':
