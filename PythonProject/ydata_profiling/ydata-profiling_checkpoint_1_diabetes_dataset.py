@@ -20,7 +20,7 @@ print("\nSummary of missing values and zeros:\n",zerosandmissing_values)
 
 #Descriptive Analysis
 print(df.describe(include='all'))
-# to be continued analysisin 3 step1
+
 for column in df.columns:
     print(f"{column}: min = {df[column].min()}, max = {df[column].max()}")
 

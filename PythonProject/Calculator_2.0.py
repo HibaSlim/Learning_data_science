@@ -29,10 +29,15 @@ class Calculator:
     def add_operation(self, symbol, function):
         self.operations[symbol]= function
 
-    def calculate(self, x,operation,y):
+    def calculate(self, x,operation,y=None):
         if operation not in self.operations:
             print(f'Error: {operation}is not valide')
             raise ValueError(f'invalid operation:{operation}')
+        elif operation in ('sqrt','log'):
+            if not (isinstance(x, (int, float))):
+                print ('Error: you must input numbers')
+                raise TypeError('input must be number')
+            return self.operations[operation](x)
         if not (isinstance(x, (int, float)) or not isinstance(y, (int, float))):
             print ('Error: you must input numbers')
             raise TypeError('input must be number')
@@ -60,16 +65,18 @@ while True:
         x = float(input("Enter the first number (or 'exit' to quit): "))
         print('Choose from available operations:','\nBasics: + , - , * , /', '\nAdvanced: Exponetiate ^, SquareRoot sqrt, logarithm log')
         operation =input('choose operation or exit:')
-        if operation not in ('sqrt','log'):
-            y = float(input("Enter the second number (or 'exit' to quit): "))
-        else :
-            y =None
         if operation == 'exit':
             break
-        result= Calculator.calculate(x, operation, y)
-        print(f"The result of{x}{operation}{y if y is not None else''}is: {result}")
+        if operation not in ('sqrt','log'):
+            y = float(input("Enter the second number (or 'exit' to quit): "))
+            result = Calculator.calculate(x, operation, y)
+            print(f"The result of{x}{operation}{y if y is not None else ''}is: {result}")
+        else :
+            result = Calculator.calculate(x, operation)
+            print(f"The result of{operation}{x}is: {result}")
     except Exception as e:
         print(e)
+
 
 if __name__=='__main__':
         main()
